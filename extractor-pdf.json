@@ -1,0 +1,219 @@
+{
+  "name": "extractor-pdf",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "data0",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        352,
+        0
+      ],
+      "id": "5ee0489b-1c19-46af-9991-a9d413d50127",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "formTitle": "Formulário para extração de dados",
+        "formDescription": "extrator de dados de arquivos",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "pdf",
+              "fieldType": "file"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        16,
+        -144
+      ],
+      "id": "63200222-90c8-4ff7-8d96-00ea02572efa",
+      "name": "On form submission",
+      "webhookId": "671d9022-e830-47ac-874f-823bfada1d4a"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"$id\": \"https://example.local/schemas/consulta-individuo.schema.json\",\n  \"title\": \"Consulta de Indivíduo - Estrutura Extraída\",\n  \"description\": \"Schema técnico da estrutura de campos identificada no documento 'Consulta de Indivíduo'.\",\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"documento\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"tipo\": { \"type\": [\"string\", \"null\"] },\n        \"estado\": { \"type\": [\"string\", \"null\"] },\n        \"orgao\": { \"type\": [\"string\", \"null\"] },\n        \"codigo_relatorio\": { \"type\": [\"string\", \"null\"] },\n        \"emitido_em\": { \"type\": [\"string\", \"null\"] },\n        \"paginas\": { \"type\": [\"integer\", \"null\"] }\n      }\n    },\n    \"identificacao\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"nome\": { \"type\": [\"string\", \"null\"] },\n        \"rg\": { \"type\": [\"string\", \"null\"] },\n        \"documento_orgao_emissor\": { \"type\": [\"string\", \"null\"] },\n        \"uf_documento\": { \"type\": [\"string\", \"null\"] },\n        \"cpf\": { \"type\": [\"string\", \"null\"] },\n        \"data_nascimento\": { \"type\": [\"string\", \"null\"] },\n        \"naturalidade\": { \"type\": [\"string\", \"null\"] },\n        \"nacionalidade\": { \"type\": [\"string\", \"null\"] },\n        \"sexo\": { \"type\": [\"string\", \"null\"] },\n        \"estado_civil\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"filiacao\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"pai_mae\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"registro_civil\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"tipo_documento_origem\": { \"type\": [\"string\", \"null\"] },\n        \"numero\": { \"type\": [\"string\", \"null\"] },\n        \"municipio\": { \"type\": [\"string\", \"null\"] },\n        \"uf\": { \"type\": [\"string\", \"null\"] },\n        \"cartorio_livro_folha\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"caracteristicas_fisicas\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"altura\": { \"type\": [\"string\", \"null\"] },\n        \"cor_pele\": { \"type\": [\"string\", \"null\"] },\n        \"cor_olhos\": { \"type\": [\"string\", \"null\"] },\n        \"amputacao\": { \"type\": [\"string\", \"null\"] },\n        \"cicatrizes\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"endereco\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"municipio\": { \"type\": [\"string\", \"null\"] },\n        \"logradouro\": { \"type\": [\"string\", \"null\"] },\n        \"numero\": { \"type\": [\"string\", \"null\"] },\n        \"cep\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"contato\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"telefone\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"cnh\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"registro\": { \"type\": [\"string\", \"null\"] },\n        \"tipo\": { \"type\": [\"string\", \"null\"] },\n        \"permissao\": { \"type\": [\"string\", \"null\"] },\n        \"categoria\": { \"type\": [\"string\", \"null\"] },\n        \"uf_dominio\": { \"type\": [\"string\", \"null\"] },\n        \"situacao\": { \"type\": [\"string\", \"null\"] },\n        \"data_emissao\": { \"type\": [\"string\", \"null\"] },\n        \"data_validade\": { \"type\": [\"string\", \"null\"] },\n        \"data_primeira_habilitacao\": { \"type\": [\"string\", \"null\"] },\n        \"uf_primeira_habilitacao\": { \"type\": [\"string\", \"null\"] },\n        \"numero_formulario_cnh\": { \"type\": [\"string\", \"null\"] },\n        \"ultimo_renach_com_foto\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"rg_cadastramento\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"via\": { \"type\": [\"string\", \"null\"] },\n        \"data_documento\": { \"type\": [\"string\", \"null\"] },\n        \"orgao_documento\": { \"type\": [\"string\", \"null\"] },\n        \"data_cadastramento\": { \"type\": [\"string\", \"null\"] },\n        \"posto_identificacao\": { \"type\": [\"string\", \"null\"] },\n        \"operador_cadastramento\": { \"type\": [\"string\", \"null\"] },\n        \"ultima_alteracao_data\": { \"type\": [\"string\", \"null\"] },\n        \"ultima_alteracao_orgao\": { \"type\": [\"string\", \"null\"] },\n        \"ultima_alteracao_operador\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"digitais\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"sequencia_1\": { \"type\": [\"string\", \"null\"] },\n        \"sequencia_2\": { \"type\": [\"string\", \"null\"] },\n        \"identificados_a_partir_de_2006\": { \"type\": [\"boolean\", \"null\"] },\n        \"historico_imagens\": { \"type\": [\"string\", \"null\"] },\n        \"dados_condutor\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"alertas_consulta\": {\n      \"type\": \"object\",\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"mandado_prisao\": { \"type\": [\"string\", \"null\"] },\n        \"imagens_ate_2006\": { \"type\": [\"string\", \"null\"] }\n      }\n    },\n    \"ocorrencias\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"ano\": { \"type\": [\"integer\", \"null\"] },\n          \"orgao\": { \"type\": [\"string\", \"null\"] },\n          \"numero\": { \"type\": [\"string\", \"null\"] },\n          \"origem\": { \"type\": [\"string\", \"null\"] },\n          \"data_fato\": { \"type\": [\"string\", \"null\"] },\n          \"hora_fato\": { \"type\": [\"string\", \"null\"] },\n          \"fato\": { \"type\": [\"string\", \"null\"] },\n          \"tipo\": { \"type\": [\"string\", \"null\"] },\n          \"data_movimentacao\": { \"type\": [\"string\", \"null\"] },\n          \"destino\": { \"type\": [\"string\", \"null\"] },\n          \"tipo_participacao\": { \"type\": [\"string\", \"null\"] },\n          \"local_resumido\": { \"type\": [\"string\", \"null\"] },\n          \"ponto_referencia\": { \"type\": [\"string\", \"null\"] }\n        }\n      }\n    }\n  }\n}",
+        "options": {
+          "systemPromptTemplate": "You are an expert extraction algorithm.\nOnly extract relevant information from the text.\nIf you do not know the value of an attribute asked to extract, you may omit the attribute's value.\nReturn ONLY valid JSON, without code blocks, without ```json and without ```.\nDo not add Markdown, formatting, or explanations.\nRespond only with the raw JSON object."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        768,
+        0
+      ],
+      "id": "5ae43f9f-bd93-4274-8977-f3fbde7534f9",
+      "name": "Information Extractor",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "gemma4:e4b",
+        "options": {
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmOllama",
+      "typeVersion": 1,
+      "position": [
+        768,
+        208
+      ],
+      "id": "a531385f-ff98-463c-8200-7020797cc543",
+      "name": "Ollama Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "EColu2IyCrQaNlWd",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ee04e102-3dc7-45e3-affc-e433ea2e503b",
+              "name": "text",
+              "value": "={{ $json.text.replace(/\\bPC\\s*\\d{2}\\/\\d{2}\\/\\d{4}\\s+\\d{2}:\\d{2}\\b/g, '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        576,
+        0
+      ],
+      "id": "1fd51555-bd6d-436a-9a19-d462b4046787",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "be24c4a0-6d10-4ead-9f1a-f2a3d26a8a79",
+        "responseMode": "responseNode",
+        "options": {
+          "binaryPropertyName": "data"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        16,
+        0
+      ],
+      "id": "b8cfce8f-f249-4119-a673-ae524ba749c4",
+      "name": "Webhook",
+      "webhookId": "be24c4a0-6d10-4ead-9f1a-f2a3d26a8a79"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1152,
+        0
+      ],
+      "id": "ebe4523b-2060-4a7d-a2eb-2736670b9e17",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        []
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "a4e52ee7-a8b3-4ac0-9398-c4363b9c045f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e7ccfd7e4f9786d238dfae2a475e37f9d213c1133f57b54a8d04108049a8410b"
+  },
+  "id": "2KhXGERoJXv4ReBx",
+  "tags": []
+}
